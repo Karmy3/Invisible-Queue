@@ -48,3 +48,10 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## Setup and Installation
+
+This project uses **Supabase** as a serverless backend. To install the necessary dependencies, run:
+
+```bash
+npx expo install @supabase/supabase-js @react-native-async-storage/async-storage react-native-url-polyfill
