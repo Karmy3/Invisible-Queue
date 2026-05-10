@@ -5,7 +5,7 @@ import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Dimensions, FlatList, Image, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import { useLocation } from '@/hooks/useLocation';
 const { width } = Dimensions.get('window');
 
 interface ServiceItem {
@@ -74,6 +74,7 @@ export default function ServicesScreen() {
   const [menuVisible, setMenuVisible] =useState(false);
   const { session } = useAuth();
   const router = useRouter();
+  const { address, location, errorMsg } = useLocation();
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setMenuVisible(false);
@@ -147,13 +148,13 @@ export default function ServicesScreen() {
             <View
               style={styles.locationTextContainer}
             >
-              <Text style={styles.locationTopText}>
-                PK135, Route Nationale 7,
-                Antsirabe, Madagascar
-              </Text>
-
-              <Text style={styles.locationName}>
-                Université Adventiste Zurcher
+              <Text style={styles.locationTopText}>My exact position</Text>
+              <Text 
+                style={styles.locationName} 
+                numberOfLines={2}
+                ellipsizeMode="tail"
+              >
+                {address}
               </Text>
             </View>
           </TouchableOpacity>
@@ -371,7 +372,7 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   locationName: {
-    fontSize: 15,
+    fontSize: 10,
     fontWeight: '700',
     color: COLORS.text,
   },

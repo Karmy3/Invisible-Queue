@@ -55,3 +55,14 @@ This project uses **Supabase** as a serverless backend. To install the necessary
 
 ```bash
 npx expo install @supabase/supabase-js @react-native-async-storage/async-storage react-native-url-polyfill
+```
+
+## Installation of the dependency
+
+The application uses the `expo-location` library to access the phone's geolocation features.
+
+Run the following command:
+
+```bash
+npx expo install expo-location
+```
