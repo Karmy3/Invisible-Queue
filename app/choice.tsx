@@ -32,7 +32,7 @@ export default function WelcomeScreen() {
 
           <TouchableOpacity 
             style={styles.guestBtn}
-            onPress={() =>  router.push('/guestQueue')/* Redirection vers la page de file d'attente pour les invités */ }
+            onPress={() =>  router.push('/guest-queue')/* Redirection vers la page de file d'attente pour les invités */ }
           >
             <Text style={styles.guestBtnText}>Continue as Guest</Text>
           </TouchableOpacity>

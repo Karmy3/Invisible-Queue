@@ -86,6 +86,22 @@ export default function ServicesScreen() {
     if (!email) return '??';
     return email.substring(0, 2).toUpperCase();
   };
+  const handleCategoryPress = (categoryName: string) => {
+    if (!location) {
+      alert("Attente de votre position GPS...");
+      return;
+    }
+
+    router.push({
+      pathname: "/select-company",
+      params: { 
+        category: categoryName, 
+        userLat: location.coords.latitude.toString(),
+        userLon: location.coords.longitude.toString()
+      }
+    });
+  };
+
   const renderServiceItem = ({
     item,
   }: {
@@ -94,6 +110,7 @@ export default function ServicesScreen() {
     <TouchableOpacity
       activeOpacity={0.85}
       style={styles.serviceItem}
+      onPress={() => handleCategoryPress(item.name)}
     >
       <View
         style={[
@@ -121,7 +138,7 @@ export default function ServicesScreen() {
       </Text>
     </TouchableOpacity>
   );
-
+  
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
